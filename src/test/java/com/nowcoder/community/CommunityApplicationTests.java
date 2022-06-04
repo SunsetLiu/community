@@ -1,11 +1,7 @@
 package com.nowcoder.community;
 
 import com.nowcoder.community.Service.AlphaService;
-import com.nowcoder.community.config.AlphaConfig;
 import com.nowcoder.community.dao.AlphaDao;
-import com.nowcoder.community.dao.AlphaDaoHibernateImpl;
-import com.nowcoder.community.dao.AlphaDaoMyBaitsImpl;
-import com.nowcoder.community.dao.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@SpringBootTest(classes = {
-		AlphaDao.class,
-		AlphaDaoMyBaitsImpl.class,
-		AlphaDaoHibernateImpl.class,
-		AlphaService.class,
-		AlphaConfig.class,
-		UserMapper.class
-})
-@ContextConfiguration(classes = CommunityApplicationTests.class)
+@SpringBootTest(classes =CommunityApplication.class)
 class CommunityApplicationTests implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
