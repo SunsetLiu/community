@@ -24,6 +24,12 @@ public class HomeController {
     @Autowired
     private DiscussPostService discussPostService;
 
+    /**
+     * 获取首页
+     * @param model
+     * @param page
+     * @return
+     */
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public String getIndexPage(Model model , Page page){
         //方法调用前，SpringMVC会自动实例化Model和Page，并将Page注入到Model
