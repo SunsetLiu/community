@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
+/**
+ * 演示的表现层
+ */
 //这两个注解都是SpringMVC的
 @Controller
 @RequestMapping("/alpha") //设置访问路径

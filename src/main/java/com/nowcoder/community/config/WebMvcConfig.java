@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * 拦截器的配置
+ */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
@@ -24,6 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/**/*.css","/**/*.js","/**/*.png","/**/*.jpg","/**/*.jpeg")
         .addPathPatterns("/register","/login");
 
+        //登录拦截器的配置
         registry.addInterceptor(loginTicketInterceptor)
                 .excludePathPatterns("/**/*.css","/**/*.js","/**/*.png","/**/*.jpg","/**/*.jpeg");
     }

@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 网站首页的表现层
+ */
 @Controller
 public class HomeController {
 

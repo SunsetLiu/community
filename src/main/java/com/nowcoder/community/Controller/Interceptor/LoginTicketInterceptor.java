@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
+/**
+ * 登录拦截类
+ */
 @Component
 public class LoginTicketInterceptor implements HandlerInterceptor {
     @Autowired

@@ -1,5 +1,8 @@
 package com.nowcoder.community.util;
 
+/**
+ * 常量的工具类
+ */
 public interface CommunityConstant {
 
     /**

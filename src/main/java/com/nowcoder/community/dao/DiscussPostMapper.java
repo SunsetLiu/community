@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 社区的Mapper
+ */
 @Mapper
 public interface DiscussPostMapper {
 

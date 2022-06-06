@@ -3,6 +3,9 @@ package com.nowcoder.community.dao;
 import com.nowcoder.community.entity.LoginTicket;
 import org.apache.ibatis.annotations.*;
 
+/**
+ * 注册的Mapping
+ */
 @Mapper
 public interface LoginTicketMapper {
 

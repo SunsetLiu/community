@@ -3,6 +3,9 @@ package com.nowcoder.community.util;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Cookie的工具类
+ */
 public class CookieUtil {
 
     /**

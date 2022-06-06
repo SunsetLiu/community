@@ -19,6 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * 用户的业务层
+ */
 @Service
 public class UserService implements CommunityConstant {
     @Autowired

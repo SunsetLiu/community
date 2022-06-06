@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * 邮件的工具类
+ */
 @Component
 public class MailClient {
 
@@ -23,6 +26,12 @@ public class MailClient {
     @Value("${spring.mail.username}")
     private String from;
 
+    /**
+     * 发送邮件
+     * @param to 发送邮件的目标者
+     * @param subject 发送邮件的主题
+     * @param content 发送邮件的内容
+     */
     public void sendMail(String to, String subject, String content){
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();

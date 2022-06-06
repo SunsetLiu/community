@@ -25,6 +25,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * 登录相关的表现层
+ */
 @Controller
 public class LoginController implements CommunityConstant {
 

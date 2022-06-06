@@ -8,11 +8,19 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+/**
+ * 验证码的配置
+ */
 @Configuration
 public class KaptchaConfig {
 
+    /**
+     * 注入验证码的Bean
+     * @return
+     */
     @Bean
     public Producer kaptchaProducer(){
+        //验证码图片的相关参数设置
         Properties properties = new Properties();
         properties.setProperty("kaptcha.image.width", "100");
         properties.setProperty("kaptcha.image.height", "40");

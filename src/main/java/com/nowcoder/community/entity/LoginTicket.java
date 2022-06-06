@@ -3,6 +3,9 @@ package com.nowcoder.community.entity;
 
 import java.util.Date;
 
+/**
+ * 注册实体类
+ */
 public class LoginTicket {
 
     private int id;

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ * 演示的业务层
+ */
 @Service
 //@Scope("prototype") //默认参数是单例singleton
 public class AlphaService {
