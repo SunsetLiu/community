@@ -1,14 +1,17 @@
 package com.nowcoder.community.util;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.DigestUtils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
  * 本系统的工具类
  */
-public class CommunityUtil {
+public class CommunityUtil<ma, main> {
 
     /**
      * 生成随机字符串
@@ -31,4 +34,52 @@ public class CommunityUtil {
         return DigestUtils.md5DigestAsHex(key.getBytes());
     }
 
+    /**
+     * 获取JSON格式的字符串
+     * @param code
+     * @param msg
+     * @param map
+     * @return
+     */
+    public static String getJSONString(int code, String msg, Map<String, Object> map){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code", code);
+        jsonObject.put("msg", msg);
+        if(map != null){
+            for (String key: map.keySet()) {
+                jsonObject.put(key, map.get(key));
+            }
+        }
+        return jsonObject.toJSONString();
+    }
+
+    /**
+     * 获取JSON格式的字符串
+     * @param code
+     * @param msg
+     * @return
+     */
+    public static String getJSONString(int code, String msg){
+        return getJSONString(code, msg, null);
+    }
+
+    /**
+     * 获取JSON格式的字符串
+     * @param code
+     * @return
+     */
+    public static String getJSONString(int code){
+        return getJSONString(code, null, null);
+    }
+
+    /**
+     * 测试JSON工具
+     * @param args
+     */
+    public static void main(String[] args) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("姓名", "张三");
+        map.put("性别", "男");
+        System.out.println(getJSONString(1, "成功", map));
+    }
 }
