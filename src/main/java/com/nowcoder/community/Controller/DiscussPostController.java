@@ -1,6 +1,7 @@
 package com.nowcoder.community.Controller;
 
 import com.nowcoder.community.Service.DiscussPostService;
+import com.nowcoder.community.Service.UserService;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityUtil;
@@ -9,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +30,9 @@ public class DiscussPostController {
 
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * 发布贴子
@@ -49,5 +55,20 @@ public class DiscussPostController {
         discussPostService.addDiscussPost(discussPost);
         // 报错的情况,将来统一处理
         return CommunityUtil.getJSONString(0, "发布成功！");
+    }
+
+    /**
+     * 查询贴子详情
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(path = "/detailed/{id}", method = RequestMethod.GET)
+    public String selectDiscussPostById(@PathVariable("id") int id, Model model){
+        DiscussPost discussPost = discussPostService.selectDiscussPostById(id);
+        model.addAttribute("discussPost",discussPost);
+        User user = userService.selectById(discussPost.getUserId());
+        model.addAttribute("user",user);
+        return "/site/discuss-detail";
     }
 }

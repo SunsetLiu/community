@@ -44,4 +44,13 @@ public class DiscussPostService {
         //过滤敏感词--由于还没开发，这步先不执行
         return discussPostMapper.insertDiscussPost(discussPost);
     }
+
+    /**
+     * 根据Id查询贴子详情
+     * @param id
+     * @return
+     */
+    public DiscussPost selectDiscussPostById(int id){
+        return discussPostMapper.selectDiscussPostById(id);
+    }
 }
