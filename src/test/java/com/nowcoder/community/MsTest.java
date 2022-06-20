@@ -5,6 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 @SpringBootTest(classes = CommunityApplication.class)
 public class MsTest {
@@ -17,6 +18,10 @@ public class MsTest {
     void testUserSql(){
 
         ArrayList<Object> objects = new ArrayList<>(100);
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("hh",1);
+        map.put("hh",2);
+        System.out.println(map.get("hh"));
     }
 
 }
