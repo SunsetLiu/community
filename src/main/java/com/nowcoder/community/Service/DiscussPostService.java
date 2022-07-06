@@ -16,6 +16,13 @@ public class DiscussPostService {
     @Autowired
     private DiscussPostMapper discussPostMapper;
 
+    /**
+     * 查询所有贴子
+     * @param userId
+     * @param offset
+     * @param limit
+     * @return
+     */
     public List<DiscussPost> selectDiscussPosts(int userId , int offset , int limit){
         return discussPostMapper.selectDiscussPosts(userId,offset,limit);
     }
@@ -52,5 +59,15 @@ public class DiscussPostService {
      */
     public DiscussPost selectDiscussPostById(int id){
         return discussPostMapper.selectDiscussPostById(id);
+    }
+
+    /**
+     * 更新贴子的评论数量
+     * @param id
+     * @param commentCount
+     * @return
+     */
+    public int updateCommentCount(int id, int commentCount){
+        return discussPostMapper.updateCommentCount(id, commentCount);
     }
 }
