@@ -1,7 +1,7 @@
-package com.nowcoder.community.Controller;
+package com.nowcoder.community.controller;
 
 import com.google.code.kaptcha.Producer;
-import com.nowcoder.community.Service.UserService;
+import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityConstant;

@@ -1,6 +1,6 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.Service.AlphaService;
+import com.nowcoder.community.service.AlphaService;
 import com.nowcoder.community.dao.AlphaDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeansException;
