@@ -21,6 +21,10 @@ public class MsTest {
         HashMap<Object, Object> map = new HashMap<>();
         map.put("hh",1);
         map.put("hh",2);
+        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuilder = new StringBuilder();
+        String s = new String();
+        Integer i = 127;
         System.out.println(map.get("hh"));
     }
 
