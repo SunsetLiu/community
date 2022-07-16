@@ -2,6 +2,7 @@ package com.nowcoder.community.controller;
 
 import com.nowcoder.community.service.CommentService;
 import com.nowcoder.community.service.DiscussPostService;
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.entity.Comment;
 import com.nowcoder.community.entity.DiscussPost;
@@ -41,6 +42,9 @@ public class DiscussPostController implements CommunityConstant {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private LikeService likeService;
+
     /**
      * 发布贴子
      * @param title
@@ -78,6 +82,12 @@ public class DiscussPostController implements CommunityConstant {
         //贴子的作者
         User user = userService.selectById(discussPost.getUserId());
         model.addAttribute("user",user);
+        //20220714添加贴子的点赞start
+        //添加点赞的数量
+        model.addAttribute("likeCount",likeService.findEntityLikeCount(ENTITY_TYPE_POST, discussPost.getId()));
+        //添加点赞的状态
+        model.addAttribute("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_POST, discussPost.getId()));
+        //20220714添加贴子的点赞end
 
         //评论的分页查询
         page.setLimit(5);
@@ -96,6 +106,12 @@ public class DiscussPostController implements CommunityConstant {
                 commentVO.put("comment",comment);
                 //评论的用户信息
                 commentVO.put("user",userService.selectById(comment.getUserId()));
+                //20220714评论的点赞数start
+                //添加点赞的数量
+                commentVO.put("likeCount",likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, comment.getId()));
+                //添加点赞的状态
+                commentVO.put("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId()));
+                //20220714评论的点赞数end
                 //评论的回复
                     List<Comment> replys = commentService.findCommentsByEntity(comment.getId(),
                             ENTITY_TYPE_COMMENT, 0, Integer.MAX_VALUE);//回复不分页
@@ -109,6 +125,12 @@ public class DiscussPostController implements CommunityConstant {
                             replyVO.put("reply", reply);
                             //回复的用户信息
                             replyVO.put("user",userService.selectById(reply.getUserId()));
+                            //20220714回复的点赞数start
+                            //添加点赞的数量
+                            replyVO.put("likeCount",likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId()));
+                            //添加点赞的状态
+                            replyVO.put("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId()));
+                            //20220714回复的点赞数end
                             //回复的目标
                             User target = reply.getTargetId() == 0 ? null : userService.selectById(reply.getTargetId());
                             replyVO.put("target", target);
