@@ -1,5 +1,6 @@
 package com.nowcoder.community.controller;
 
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
@@ -33,6 +34,9 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @Autowired
+    private LikeService likeService;
+
     @Value("${server.servlet.context-path}")
     private String contextPath;
 
@@ -41,6 +45,7 @@ public class UserController {
 
     @Value("${community.path.upload}")
     private String uploadPath;
+
 
     /**
      * 获取账号设置页面
@@ -146,5 +151,26 @@ public class UserController {
             model.addAttribute("passwordMsg", map.get("passwordMsg"));
             return "/site/setting";
         }
+    }
+
+    /**
+     * 个人主页
+     * @param userId
+     * @param model
+     * @return
+     */
+    @RequestMapping(path = "/profile/{userId}", method = RequestMethod.GET)
+    public String getProfilePage(@PathVariable("userId") int userId, Model model){
+        User user = userService.selectById(userId);
+        if(user == null){
+            throw new RuntimeException("用户不存在！");
+        }
+        //用户
+        model.addAttribute("user", user);
+        //获得的点赞数量
+        long userLikeCount = likeService.findUserLikeCount(userId);
+        model.addAttribute("userLikeCount", userLikeCount);
+
+        return "/site/profile";
     }
 }
