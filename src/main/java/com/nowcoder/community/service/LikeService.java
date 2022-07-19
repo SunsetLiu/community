@@ -77,13 +77,19 @@ public class LikeService {
 
     /**
      * 获取用户获取赞的数量
-     * @param entityUserId
+     * @param userId
      * @return
      */
-    public long findUserLikeCount(int entityUserId){
-        String userLikeKey = RedisKeyUtil.getUserLikeKey(entityUserId);
-        Long count = Long.valueOf(String.valueOf(redisTemplate.opsForValue().get(userLikeKey)));
+//    public long findUserLikeCount(int entityUserId){
+//        String userLikeKey = RedisKeyUtil.getUserLikeKey(entityUserId);
+//        Long count = Long.valueOf(String.valueOf(redisTemplate.opsForValue().get(userLikeKey)));
+//
+//        return count == null ? 0 : count;
+//    }
 
-        return count == null ? 0 : count;
+    public int findUserLikeCount(int userId) {
+        String userLikeKey = RedisKeyUtil.getUserLikeKey(userId);
+        Integer count = (Integer) redisTemplate.opsForValue().get(userLikeKey);
+        return count == null ? 0 : count.intValue();
     }
 }
