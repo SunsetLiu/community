@@ -1,5 +1,7 @@
 package com.nowcoder.community.util;
 
+import com.nowcoder.community.entity.LoginTicket;
+
 public class RedisKeyUtil {
 
     private static final String SPLIT = ":";
@@ -7,6 +9,9 @@ public class RedisKeyUtil {
     private static final String PREFIX_USER_LIKE = "like:user";
     private static final String PREFIX_FOLLOWEE = "followee";
     private static final String PREFIX_FOLLOWER = "follower";
+    private static final String PREFIX_KAPTCHA = "kaptcha";
+    private static final String PREFIX_TICKET = "ticket";
+    private static final String PREFIX_USER = "user";
 
     /**
      * 获取某个实体的赞的key
@@ -28,7 +33,7 @@ public class RedisKeyUtil {
     }
 
     /**
-     * 获取某用户关注的实体
+     * 获取某用户关注的实体的key
      * @param entityType
      * @param userId
      * @return followee:userId:entityType->zset(entityId,now)
@@ -38,13 +43,40 @@ public class RedisKeyUtil {
     }
 
     /**
-     * 获取某实体的关注用户
+     * 获取某实体的关注用户的key
      * @param entityType
      * @param entityId
      * @return follower:entityType:entityId->zset(userId,now)
      */
     public static String getFollowerKey(int entityType, int entityId){
         return PREFIX_FOLLOWER + SPLIT + entityType + SPLIT + entityId;
+    }
+
+    /**
+     * 获取验证码的key
+     * @param owner
+     * @return kaptcha:owner -> string
+     */
+    public static String getKaptchaKey(String owner){
+        return PREFIX_KAPTCHA + SPLIT + owner;
+    }
+
+    /**
+     * 获取凭证的key
+     * @param ticket
+     * @return
+     */
+    public static String getTicketKey(String ticket){
+        return PREFIX_KAPTCHA + SPLIT + ticket;
+    }
+
+    /**
+     * 获取用户的key
+     * @param userId
+     * @return
+     */
+    public static String getUserKey(int userId){
+        return PREFIX_KAPTCHA + SPLIT + userId;
     }
 
 }
