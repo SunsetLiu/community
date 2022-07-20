@@ -25,7 +25,7 @@ function follow() {
 		// 取消关注
 		$.post(
 			CONTEXT_PATH + "/unfollow",
-			{"entityType":3, "entityId":$(btn).prev().value},
+			{"entityType":3, "entityId":$(btn).prev().val()},
             function (data) {
                 data = $.parseJSON(data);
                 if(data.code == 0){
