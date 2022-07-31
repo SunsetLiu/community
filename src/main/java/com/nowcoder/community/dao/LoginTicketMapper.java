@@ -7,6 +7,9 @@ import org.apache.ibatis.annotations.*;
  * 注册的Mapping
  */
 @Mapper
+/**
+ * 由于LoginTicketMapper的数据从数据库存储改为放在redis，所以采用注解@Deprecated将这个类不推荐使用
+ */
 @Deprecated
 public interface LoginTicketMapper {
 

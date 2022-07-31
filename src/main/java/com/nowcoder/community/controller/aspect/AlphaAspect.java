@@ -4,6 +4,9 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
+/**
+ * 演示统一日志管理
+ */
 //@Component
 //@Aspect
 public class AlphaAspect {

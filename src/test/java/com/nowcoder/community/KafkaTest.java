@@ -8,6 +8,9 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * kafka测试类
+ */
 @SpringBootTest(classes =CommunityApplication.class)
 public class KafkaTest {
     @Autowired
@@ -26,6 +29,9 @@ public class KafkaTest {
     }
 }
 
+/**
+ * 测试kafka生产者
+ */
 @Component
 class KafkaProducer{
     @Autowired
@@ -36,6 +42,9 @@ class KafkaProducer{
     }
 }
 
+/**
+ * 测试kafka消费者
+ */
 @Component
 class KafkaConsumer{
 

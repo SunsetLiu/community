@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
+/**
+ * 测试mapper文件SQL是否写的正确的测试类
+ */
 @SpringBootTest(classes = CommunityApplication.class)
 public class MapperTest {
 

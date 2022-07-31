@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.*;
 
 
+/**
+ * 贴子详情的表现层
+ */
 @Controller
 @RequestMapping("/discuss")
 public class DiscussPostController implements CommunityConstant {
@@ -86,7 +89,11 @@ public class DiscussPostController implements CommunityConstant {
         //添加点赞的数量
         model.addAttribute("likeCount",likeService.findEntityLikeCount(ENTITY_TYPE_POST, discussPost.getId()));
         //添加点赞的状态
-        model.addAttribute("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_POST, discussPost.getId()));
+        if(hostHolder.getUser()!=null){
+            model.addAttribute("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_POST, discussPost.getId()));
+        }else {
+            model.addAttribute("likeStatus",0);
+        }
         //20220714添加贴子的点赞end
 
         //评论的分页查询
@@ -110,7 +117,12 @@ public class DiscussPostController implements CommunityConstant {
                 //添加点赞的数量
                 commentVO.put("likeCount",likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, comment.getId()));
                 //添加点赞的状态
-                commentVO.put("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId()));
+                if(hostHolder.getUser()!=null){
+                    commentVO.put("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId()));
+                }else {
+                    commentVO.put("likeStatus",0);
+                }
+
                 //20220714评论的点赞数end
                 //评论的回复
                     List<Comment> replys = commentService.findCommentsByEntity(comment.getId(),
@@ -129,7 +141,11 @@ public class DiscussPostController implements CommunityConstant {
                             //添加点赞的数量
                             replyVO.put("likeCount",likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId()));
                             //添加点赞的状态
-                            replyVO.put("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId()));
+                            if(hostHolder.getUser()!=null){
+                                replyVO.put("likeStatus",likeService.findUserLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId()));
+                            }else {
+                                replyVO.put("likeStatus",0);
+                            }
                             //20220714回复的点赞数end
                             //回复的目标
                             User target = reply.getTargetId() == 0 ? null : userService.selectById(reply.getTargetId());

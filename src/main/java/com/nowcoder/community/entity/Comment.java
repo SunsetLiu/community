@@ -2,6 +2,9 @@ package com.nowcoder.community.entity;
 
 import java.util.Date;
 
+/**
+ * 评论的实体类
+ */
 public class Comment {
     private int id;
     private int userId;

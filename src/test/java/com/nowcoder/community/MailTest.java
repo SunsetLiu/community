@@ -7,6 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+/**
+ * 邮件的测试类
+ */
 @SpringBootTest(classes = CommunityApplication.class)
 public class MailTest {
 

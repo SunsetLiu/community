@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * 本人面试相关验证代码罢了
+ */
 @SpringBootTest(classes = CommunityApplication.class)
 public class MsTest {
 

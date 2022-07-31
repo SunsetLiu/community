@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+/**
+ * 事务相关测试
+ */
 @SpringBootTest(classes = CommunityApplication.class)
 public class TransactionTest {
 

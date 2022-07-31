@@ -1,7 +1,8 @@
 package com.nowcoder.community.util;
 
-import com.nowcoder.community.entity.LoginTicket;
-
+/**
+ * redisKey的工具类
+ */
 public class RedisKeyUtil {
 
     private static final String SPLIT = ":";
@@ -67,7 +68,7 @@ public class RedisKeyUtil {
      * @return
      */
     public static String getTicketKey(String ticket){
-        return PREFIX_KAPTCHA + SPLIT + ticket;
+        return PREFIX_TICKET + SPLIT + ticket;
     }
 
     /**
@@ -76,7 +77,7 @@ public class RedisKeyUtil {
      * @return
      */
     public static String getUserKey(int userId){
-        return PREFIX_KAPTCHA + SPLIT + userId;
+        return PREFIX_USER + SPLIT + userId;
     }
 
 }

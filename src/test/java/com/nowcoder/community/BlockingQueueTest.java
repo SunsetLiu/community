@@ -4,6 +4,9 @@ import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * BlockingQueue的测试类
+ */
 public class BlockingQueueTest {
 
     public static void main(String[] args) {
@@ -15,6 +18,9 @@ public class BlockingQueueTest {
     }
 }
 
+/**
+ * 测试BlockingQueue的生产者
+ */
 class Producer implements Runnable{
     private BlockingQueue<Integer> queue;
 
@@ -37,6 +43,9 @@ class Producer implements Runnable{
     }
 }
 
+/**
+ * 测试BlockingQueue的消费者
+ */
 class Consumer implements Runnable{
     private BlockingQueue<Integer> queue;
     public Consumer(BlockingQueue<Integer> queue) {

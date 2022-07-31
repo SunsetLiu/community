@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * 关注的业务层
+ */
 @Service
 public class FollowService implements CommunityConstant {
 

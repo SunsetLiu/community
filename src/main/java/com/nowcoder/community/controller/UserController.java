@@ -24,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.Map;
 
+/**
+ * 用户相关的表现层
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController implements CommunityConstant {

@@ -11,6 +11,9 @@ import org.springframework.data.redis.core.SessionCallback;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * redis相关测试
+ */
 @SpringBootTest(classes = CommunityApplication.class)
 public class RedisTest {
 

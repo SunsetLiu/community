@@ -13,6 +13,9 @@ import org.springframework.context.ApplicationContextAware;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 本身自带的测试类
+ */
 @SpringBootTest(classes =CommunityApplication.class)
 class CommunityApplicationTests implements ApplicationContextAware {
 

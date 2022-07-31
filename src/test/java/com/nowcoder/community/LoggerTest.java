@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
+/**
+ * 日志相关测试类
+ */
 @SpringBootTest
 @ContextConfiguration(classes = CommunityApplication.class)
 public class LoggerTest {

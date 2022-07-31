@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 统一日志管理，统一对服务层进行日志管理
+ */
 @Component
 @Aspect
 public class ServiceLogAspect {
@@ -35,6 +38,9 @@ public class ServiceLogAspect {
     public void before(JoinPoint joinPoint){
         //需求：用户[172.12.15.1]，在[某个时间]，访问了[com.nowcoder.community.service.xxx]
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if(attributes == null){
+            return;
+        }
         HttpServletRequest request = attributes.getRequest();
         String ip = request.getRemoteHost();
         String date = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss").format(new Date());
